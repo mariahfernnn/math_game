@@ -24,8 +24,8 @@ class Game
   end
 
   def add_players
-    add_player("Maria")
-    add_player("Michael")
+    add_player_1 = $stdin.gets.chomp
+    add_player_2 = $stdin.gets.chomp
     @current_player = @players.first
   end 
 
@@ -41,7 +41,7 @@ class Game
 
   def ask_question
     question = Question.new
-    question.ask(...)
+    question.ask
 
     print "> "
       user_answer = $stdin.gets.chomp

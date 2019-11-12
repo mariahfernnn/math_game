@@ -11,8 +11,8 @@ class Question
     @total = self.random_number_1 + self.random_number_2
   end
 
-  def ask
-    puts "What does #{random_number_1} plus #{random_number_2} equal?"
+  def ask(name)
+    puts "#{name} : What does #{random_number_1} plus #{random_number_2} equal?"
 
     # print "> "
     # user_answer = $stdin.gets.chomp
