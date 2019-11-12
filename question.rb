@@ -12,15 +12,6 @@ class Question
   end
 
   def ask(name)
-    puts "#{name} : What does #{random_number_1} plus #{random_number_2} equal?"
-
-    # print "> "
-    # user_answer = $stdin.gets.chomp
-
-    # if sum == user_answer.to_i
-    #   puts "YES! You are correct."
-    # else sum != user_answer
-    #   puts "Seriously? No!"
-    # end
+    puts "#{name}, What does #{random_number_1} plus #{random_number_2} equal?"
   end
 end

@@ -1,4 +1,5 @@
 # Assisted by Michael Fich(mentor) & Mikias Abera(mentor)
+# Assisted by Peter Hang(student)
 require './question.rb'
 require './player.rb'
 
@@ -7,15 +8,18 @@ class Game
 
   def initialize
     @players = []
+    start
   end
 
   def start
+    puts "Welcome!"
     add_players
     
     while players_are_alive do
       ask_question
       switch_player
     end
+    puts "#{@current_player.name} wins with a score of #{@current_player.lives}/3"
     puts "Game over"
   end
 
@@ -23,12 +27,21 @@ class Game
     @players.first.lives != 0 && @players.last.lives != 0 
   end
 
+  def winner
+    if @current_player.lives == 0
+      switch_player
+    end
+  end
+
   def add_players
-    add_player_1 = $stdin.gets.chomp
-    add_player_2 = $stdin.gets.chomp
+    # add_player1 = gets.chomp
+    # add_player2 = gets.chomp
+    add_player("Maria")
+    add_player("Michael")
     @current_player = @players.first
   end 
 
+  # This method will add new players to the game
   def add_player(player_name)
     player = Player.new(player_name, 3)
     @players.push(player)
@@ -41,10 +54,10 @@ class Game
 
   def ask_question
     question = Question.new
-    question.ask
+    question.ask(@current_player.name)
 
     print "> "
-      user_answer = $stdin.gets.chomp
+      user_answer = $stdin.gets.chomp.to_i
     
     if user_answer != question.sum
       @current_player.lives -= 1
@@ -57,18 +70,4 @@ class Game
       puts "-----NEW TURN-----"
     end
   end
-
-  # Method does not work
-  # def wrong_answer(lives)
-  #   # @lives = 3
-  #   if sum != user_answer
-  #     @lives -= 1
-  #   end
-  # end
 end  
-
-# class Turn
-#   def initialize
-#     self.currentplayer = (self.currentplayer + 1) % 2
-#   end
-# end
