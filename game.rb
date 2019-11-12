@@ -36,8 +36,8 @@ class Game
   def add_players
     # add_player1 = gets.chomp
     # add_player2 = gets.chomp
-    add_player("Maria")
-    add_player("Michael")
+    add_player("Player 1")
+    add_player("Player 2")
     @current_player = @players.first
   end 
 
